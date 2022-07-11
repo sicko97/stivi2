@@ -1,0 +1,7 @@
+<button mat-raised-button (click)="openDialog()" ><mat-icon>add</mat-icon></button>
+<ul class="list-group">
+    <li *ngFor="let cat of categories" class="list-group-item d-flex justify-content-between align-items-center">
+      {{cat.name}}
+      <button (click)="addArticles(cat.name)" type="button" class="btn btn-primary">Add to category</button>
+    </li>
+  </ul>

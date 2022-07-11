@@ -1,0 +1,120 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="mat-elevation-z8" [dataSource]="dataSource" aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef >Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef >Name</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <!-- Unit Column -->
+    <ng-container matColumnDef="unit">
+      <th mat-header-cell *matHeaderCellDef >Unit</th>
+      <td mat-cell *matCellDef="let row">{{row.unit}}</td>
+    </ng-container>
+
+    <!-- Pdv Column -->
+    <ng-container matColumnDef="pdv">
+      <th mat-header-cell *matHeaderCellDef >PDV</th>
+      <td mat-cell *matCellDef="let row">{{row.pdv}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+  </mat-paginator>
+</div>
+<button class="unos-dugme" mat-raised-button (click)="openForm()">Unos</button>
+
+<div *ngIf="visible">
+  <mat-tab-group>
+    <!-- TODO: dodati mogucnost unosa slike -->
+    <mat-tab label="Opsti">
+      <table class="table table-hover">
+        <tbody>
+          <tr class="table-active">
+            <th scope="row">ID</th>
+            <td>
+              <mat-form-field>
+                <mat-label>ID:</mat-label>
+                <input matInput type="text" [(ngModel)]="commodity_id">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row">Name</th>
+            <td>
+              <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" [(ngModel)]="commodity_name">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row">Unit</th>
+            <td>
+              <mat-form-field>
+                <mat-label>Unit</mat-label>
+                <input matInput type="text" [(ngModel)]="commodity_unit">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row">Email</th>
+            <td>
+              <div class="form-group">
+                <!-- <label for="exampleInputEmail1" class="form-label mt-4">Email address</label> -->
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-tab>
+    <mat-tab label="Cene i stanje">
+      <table>
+        <tr>
+          <th>Naziv</th>
+          <th>Stanje na lageru</th>
+          <th>Min zeljena kol</th>
+          <th>Max zeljena kol</th>
+          <th>Nabavna cena</th>
+          <th>Prodajna cena</th>
+        </tr>
+        <tr *ngFor="let storage of entp_details.storage;let i=index">
+          <td>
+            <input type="text" readonly="" class="form-control-plaintext" id="storage_name" value="{{storage.name}}">
+          </td>
+          <td>
+            <input type="number" name="qty_{{i}}" [(ngModel)]="prices[i].qty">
+          </td>
+          <td>
+            <input type="number" name="min_{{i}}" [(ngModel)]="prices[i].min">
+          </td>
+          <td>
+            <input type="number" name="max_{{i}}" [(ngModel)]="prices[i].max">
+          </td>
+          <td>
+            <input type="number" name="purchase_{{i}}" [(ngModel)]="prices[i].purchase_price">
+          </td>
+          <td>
+            <input type="number" name="selling_{{i}}" [(ngModel)]="prices[i].selling_price">
+          </td>
+        </tr>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<button (click)="confirm()">Confirm</button>

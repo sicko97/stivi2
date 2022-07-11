@@ -1,0 +1,132 @@
+<mat-tab-group>
+    <mat-tab label="Opste">
+        <!-- <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <img src="{{entp.logo}}" class="header-image">
+                </div>
+                <mat-card-title>{{entp.username}}</mat-card-title>
+                <mat-card-subtitle>{{entp.email}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Firstname: {{entp.firstname}}</p>
+                <p>Lastname: {{entp.lastname}}</p>
+                <p>Enterprise name: {{entp.name}}</p>
+                <p>PIB: {{entp.PIB}}</p>
+                <p>Phone: {{entp.phone}}</p>
+                <p>Category: {{entp_details.category}}</p>
+                <p>Classification code: {{entp_details.code}}</p>
+            </mat-card-content>
+          </mat-card> -->
+          <div class="card border-primary mb-3" style="max-width: 100%;">
+            <div class="card-header">
+                {{entp.username}}
+            <div mat-card-avatar>
+                <img src="{{entp.logo}}" class="header-image">
+            </div>
+            </div>
+            <div class="card-body">
+                <fieldset>
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                      <div class="col-sm-10">
+                        <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="{{entp.email}}">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="staticFirstname" class="col-sm-2 col-form-label">Firstname</label>
+                      <div class="col-sm-10">
+                        <input type="text" readonly="" class="form-control-plaintext" id="staticFirstname" value="{{entp.firstname}}">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticLastname" class="col-sm-2 col-form-label">Lastname</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticLastname" value="{{entp.lastname}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticName" class="col-sm-2 col-form-label">Enterprise name</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticName" value="{{entp.name}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticPib" class="col-sm-2 col-form-label">PIB</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticPib" value="{{entp.PIB}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticPhone" class="col-sm-2 col-form-label">Phone number</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticPhone" value="{{entp.phone}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticCategory" class="col-sm-2 col-form-label">Category</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticCategory" value="{{entp_details.category}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticCode" class="col-sm-2 col-form-label">Classification code</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly="" class="form-control-plaintext" id="staticCode" value="{{entp_details.code}}">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+          </div>
+    </mat-tab>
+    <mat-tab label="Ziro racuni">
+        <table mat-table [dataSource]="dataSourceBank" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="bank_name">
+                    <th mat-header-cell *matHeaderCellDef> Bank name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.bank_name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="account_number">
+                    <th mat-header-cell *matHeaderCellDef> Account number </th>
+                    <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+                </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsBank"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsBank;"></tr>
+        </table>
+    </mat-tab>
+    <mat-tab label="Magacini i kase">
+        <h2>Storages</h2>
+        <table mat-table [dataSource]="dataSourceStorage" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="storage_id">
+                    <th mat-header-cell *matHeaderCellDef> Storage ID  </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="storage_name">
+                    <th mat-header-cell *matHeaderCellDef> Storage name</th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsStorage"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsStorage;"></tr>
+        </table>
+        <br/>
+        <h2>Cash registers</h2>
+        <table mat-table [dataSource]="dataSourceRegister" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="register_type">
+                    <th mat-header-cell *matHeaderCellDef> Register type</th>
+                    <td mat-cell *matCellDef="let element"> {{element.register_type}} </td>
+                </ng-container>
+                <ng-container matColumnDef="location">
+                    <th mat-header-cell *matHeaderCellDef> Location</th>
+                    <td mat-cell *matCellDef="let element"> {{element.obj_location}} </td>
+                </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsRegister"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsRegister;"></tr>
+        </table>
+
+    </mat-tab>
+</mat-tab-group>

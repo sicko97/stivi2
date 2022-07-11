@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 m-auto mt-4">
+            <div class="form-group">
+                <input type="text" (input)="getCollab($event)" 
+                class="form-control form-control-lg" placeholder="Search enterprises">
+            </div>
+
+            <div *ngFor="let entp of enterprises; let i=index">
+                <div class="card card-body mb-1">
+                    <!-- <div class="card-header">{{entp.name}}</div>
+                    <div class="card-body"> -->
+                        <h3>{{entp.name}}</h3>
+                        <mat-form-field>
+                            <mat-label>Rabat</mat-label>
+                            <input type="text" matInput [(ngModel)]="rabat">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Number of days</mat-label>
+                            <input type="text" matInput [(ngModel)]="no_days">
+                        </mat-form-field>
+                        <button mat-raised-button (click)="add(i)">Add</button>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

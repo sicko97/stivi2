@@ -1,0 +1,29 @@
+<h1>{{cat_name}}</h1>
+<div class="container">
+    <div class="row row1">
+        <div class="col-md-6 m-auto mt-4">
+            <div class="form-group">
+                <input type="text" (input)="filterByName($event)" 
+                class="form-control form-control-lg" placeholder="Filter by name">
+            </div>
+    </div>
+    <div class="row row2">
+        <table>
+            <tr>
+                <th>Sifra</th>
+                <th>Naziv</th>
+                <th>Jedinica mere</th>
+                <th>Dodaj artikal</th>
+            </tr>
+            <tr *ngFor="let commodity of commodities_temp">
+                <td>{{commodity.id}}</td>
+                <td>{{commodity.name}}</td>
+                <td>{{commodity.unit}}</td>
+                <td>
+                    <button (click)="addToCategory(commodity)">Dodaj</button>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</div>

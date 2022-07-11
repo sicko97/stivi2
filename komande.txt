@@ -1,0 +1,9 @@
+fontend
+ng add @angular/material
+ng generate @angular/material:dashboard <component-name>
+ng generate @angular/material:navigation <component-name>
+ng generate @angular/material:navigation <component-name>
+
+backend
+npm install --save multer
+npm i --save-dev @types/multer // U SLUCAJU DA SE CRVENI IMPORT MULTERA

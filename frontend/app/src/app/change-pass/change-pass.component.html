@@ -1,0 +1,19 @@
+<form class="changePassForm" [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Old password</mat-label>
+        <input type="text" matInput name="old" formControlName="old">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>New password</mat-label>
+        <input type="password" matInput name="new1" formControlName="new1">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Confirm new password</mat-label>
+        <input type="password" matInput name="new2" formControlName="new2">
+    </mat-form-field>
+
+    <span class="error">{{errorMessage}}</span>
+    <button mat-raised-button [disabled]="!form.valid"(click)="change()">Change</button>
+</form>

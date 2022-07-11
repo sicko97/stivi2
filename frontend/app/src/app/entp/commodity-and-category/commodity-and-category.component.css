@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+  }
+.row1{
+    margin-bottom: 50px;
+}
+
+.row2{
+    margin-top: 50px;
+}
